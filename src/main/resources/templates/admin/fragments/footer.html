@@ -1,0 +1,38 @@
+</div>
+<!-- /.container-fluid -->
+</div>
+<!-- End of Main Content -->
+
+<!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; <span id="year"></span> CCSD</span>
+        </div>
+    </div>
+</footer>
+<!-- End of Footer -->
+</div>
+<!-- End of Content Wrapper -->
+</div>
+<!-- End of Page Wrapper -->
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/htmx.js"></script>
+
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#detailsTable').DataTable();
+    });
+</script>
+
+<!--Year-->
+<script>
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+</script>
+</body>
+</html>
+
+
