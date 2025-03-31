@@ -1,4 +1,4 @@
-package com.bryansiegel.ccsdbidsjava.controllers.admin;
+package com.bryansiegel.ccsdbidsjava.controllers;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
