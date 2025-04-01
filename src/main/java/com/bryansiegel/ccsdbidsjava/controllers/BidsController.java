@@ -60,7 +60,7 @@ public class BidsController {
         return "redirect:/admin/bids";
     }
 
-    @GetMapping("/admin/{bidId}/subcontractors")
+    @GetMapping("/{bidId}/subcontractors")
     public String listSubContractors(@PathVariable Long bidId, Model model) {
         Bids bid = bidsService.findById(bidId);
         model.addAttribute("bid", bid);
@@ -68,7 +68,7 @@ public class BidsController {
         return "admin/subcontractors/list";
     }
 
-    @GetMapping("/admin/{bidId}/subcontractors/create")
+    @GetMapping("/{bidId}/subcontractors/create")
     public String createSubContractorForm(@PathVariable Long bidId, Model model) {
         SubContractorListing subContractorListing = new SubContractorListing();
         subContractorListing.setBids(bidsService.findById(bidId));
@@ -76,7 +76,7 @@ public class BidsController {
         return "admin/subcontractors/create";
     }
 
-    @PostMapping("/admin/{bidId}/subcontractors/create")
+    @PostMapping("/{bidId}/subcontractors/create")
     public String createSubContractor(@PathVariable Long bidId, @ModelAttribute SubContractorListing subContractorListing) {
         Bids bid = bidsService.findById(bidId);
         subContractorListing.setBids(bid);
@@ -84,14 +84,14 @@ public class BidsController {
         return "redirect:/admin/bids/" + bidId + "/subcontractors";
     }
 
-    @GetMapping("/admin/{bidId}/subcontractors/edit/{id}")
+    @GetMapping("/{bidId}/subcontractors/edit/{id}")
     public String editSubContractorForm(@PathVariable Long bidId, @PathVariable Long id, Model model) {
         SubContractorListing subContractorListing = subContractorListingService.findById(id);
         model.addAttribute("subContractorListing", subContractorListing);
         return "admin/subcontractors/edit";
     }
 
-    @PostMapping("/admin/{bidId}/subcontractors/edit/{id}")
+    @PostMapping("/{bidId}/subcontractors/edit/{id}")
     public String editSubContractor(@PathVariable Long bidId, @PathVariable Long id, @ModelAttribute SubContractorListing subContractorListing) {
         subContractorListing.setId(id);
         subContractorListing.setBids(bidsService.findById(bidId));
@@ -99,7 +99,7 @@ public class BidsController {
         return "redirect:/admin/bids/" + bidId + "/subcontractors";
     }
 
-    @GetMapping("/admin/{bidId}/subcontractors/delete/{id}")
+    @GetMapping("/{bidId}/subcontractors/delete/{id}")
     public String deleteSubContractor(@PathVariable Long bidId, @PathVariable Long id) {
         subContractorListingService.deleteById(id);
         return "redirect:/admin/bids/" + bidId + "/subcontractors";
