@@ -15,11 +15,14 @@ import java.util.List;
 @RequestMapping("/admin/bids")
 public class BidsController {
 
-    @Autowired
-    private BidsService bidsService;
+    private final BidsService bidsService;
 
-    @Autowired
-    private SubContractorListingService subContractorListingService;
+    private final SubContractorListingService subContractorListingService;
+
+    public BidsController(BidsService bidsService, SubContractorListingService subContractorListingService) {
+        this.bidsService = bidsService;
+        this.subContractorListingService = subContractorListingService;
+    }
 
     @GetMapping
     public String listBids(Model model) {
