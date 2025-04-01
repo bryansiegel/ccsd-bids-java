@@ -1,19 +1,47 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Edit Bid</title>
-</head>
-<body>
+<head th:insert="~{admin/fragments/head}"></head>
+<div th:insert="~{admin/fragments/header}"></div>
+
 <h1>Edit Bid</h1>
-<form th:action="@{/admin/bids/edit/{id}(id=${bid.id})}" th:object="${bid}" method="post">
-    <label>Contract Name: <input type="text" th:field="*{contractName}"/></label><br/>
-    <label>Advertisement For Bids: <input type="text" th:field="*{advertisementForBids}"/></label><br/>
-    <label>MPID Number: <input type="text" th:field="*{mpidNumber}"/></label><br/>
-    <label>Document URL: <input type="text" th:field="*{documentUrl}"/></label><br/>
-    <label>Pre-Bid Sign-In Sheet: <input type="text" th:field="*{preBidSignInSheet}"/></label><br/>
-    <label>Bid Tabulation Sheet: <input type="text" th:field="*{bidTabulationSheet}"/></label><br/>
-    <label>Active: <input type="checkbox" th:field="*{active}"/></label><br/>
-    <button type="submit">Save</button>
+<form th:action="@{/admin/bids/edit/{id}(id=${bid.id})}" th:object="${bid}" method="post" class="form">
+
+    <div class="form-group">
+    <label class="form-label">Contract Name:</label>
+    <input type="text" th:field="*{contractName}" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+    <label class="form-label">Advertisement For Bids: </label>
+    <input type="text" th:field="*{advertisementForBids}" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+    <label class="form-label">MPID Number:</label>
+        <input type="text" th:field="*{mpidNumber}" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+    <label class="form-label">Document URL:</label>
+        <input type="text" th:field="*{documentUrl}" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+    <label class="form-label">Pre-Bid Sign-In Sheet:</label>
+        <input type="text" th:field="*{preBidSignInSheet}" class="form-control"/>
+    </div>
+
+<div class="form-group">
+    <label>Bid Tabulation Sheet:</label>
+        <input type="text" th:field="*{bidTabulationSheet}" class="form-control"/>
+</div>
+
+    <div class="form-group">
+    <label class="form-label">Active:</label>
+        <input type="checkbox" th:field="*{active}" class="form-check"/>
+    </div>
+
+    <div class="form-group">
+    <button type="submit" class="btn btn-primary">Save</button>
+    </div>
 </form>
-</body>
-</html>
+
+<footer th:insert="~{admin/fragments/footer}"></footer>

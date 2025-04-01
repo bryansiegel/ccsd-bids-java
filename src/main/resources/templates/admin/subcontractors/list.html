@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>SubContractors List</title>
-</head>
-<body>
+<head th:insert="~{admin/fragments/head}"></head>
+<div th:insert="~{admin/fragments/header}"></div>
+
 <h1>SubContractors List for Bid: <span th:text="${bid.contractName}">Contract Name</span></h1>
-<a th:href="@{/admin/bids/{bidId}/subcontractors/create(bidId=${bid.id})}">Create New SubContractor</a>
-<table>
+
+<a th:href="@{/admin/bids/{bidId}/subcontractors/create(bidId=${bid.id})}" class="btn btn-primary">Create New SubContractor</a>
+
+<table class="table table-striped mt-3">
     <thead>
     <tr>
         <th>ID</th>
@@ -23,11 +22,11 @@
         <td th:text="${subContractor.documentId}">Document ID</td>
         <td th:text="${subContractor.documentUrl}">Document URL</td>
         <td>
-            <a th:href="@{/admin/bids/{bidId}/subcontractors/edit/{id}(bidId=${bid.id}, id=${subContractor.id})}">Edit</a>
-            <a th:href="@{/admin/bids/{bidId}/subcontractors/delete/{id}(bidId=${bid.id}, id=${subContractor.id})}">Delete</a>
+            <a th:href="@{/admin/bids/{bidId}/subcontractors/edit/{id}(bidId=${bid.id}, id=${subContractor.id})}" class="btn btn-info">Edit</a>
+            <a th:href="@{/admin/bids/{bidId}/subcontractors/delete/{id}(bidId=${bid.id}, id=${subContractor.id})}" class="btn btn-danger">Delete</a>
         </td>
     </tr>
     </tbody>
 </table>
-</body>
-</html>
+
+<footer th:insert="~{admin/fragments/footer}"></footer>

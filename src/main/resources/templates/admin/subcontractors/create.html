@@ -1,15 +1,30 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Create SubContractor</title>
-</head>
-<body>
+<head th:insert="~{admin/fragments/head}"></head>
+<div th:insert="~{admin/fragments/header}"></div>
+
 <h1>Create SubContractor for Bid: <span th:text="${subContractorListing.bids.contractName}">Contract Name</span></h1>
-<form th:action="@{/admin/bids/{bidId}/subcontractors/create(bidId=${subContractorListing.bids.id})}" th:object="${subContractorListing}" method="post">
-    <label>MPID Number: <input type="text" th:field="*{mpidNumber}"/></label><br/>
-    <label>Document ID: <input type="text" th:field="*{documentId}"/></label><br/>
-    <label>Document URL: <input type="text" th:field="*{documentUrl}"/></label><br/>
-    <button type="submit">Save</button>
+
+
+<form th:action="@{/admin/bids/{bidId}/subcontractors/create(bidId=${subContractorListing.bids.id})}" th:object="${subContractorListing}" method="post" class="form">
+
+    <div class="form-group">
+        <label class="form-label">MPID Number:</label>
+        <input type="text" th:field="*{mpidNumber}" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+    <label class="form-label">Document ID:</label>
+        <input type="text" th:field="*{documentId}" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Document URL:</label>
+        <input type="text" th:field="*{documentUrl}" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+    <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+
 </form>
-</body>
-</html>
+
+<footer th:insert="~{admin/fragments/footer}"></footer>
