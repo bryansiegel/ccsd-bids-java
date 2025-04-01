@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Bid</title>
+</head>
+<body>
+<h1>Create Bid</h1>
+<form th:action="@{/admin/bids/create}" th:object="${bid}" method="post">
+    <label>Contract Name: <input type="text" th:field="*{contractName}"/></label><br/>
+    <label>Advertisement For Bids: <input type="text" th:field="*{advertisementForBids}"/></label><br/>
+    <label>MPID Number: <input type="text" th:field="*{mpidNumber}"/></label><br/>
+    <label>Document URL: <input type="text" th:field="*{documentUrl}"/></label><br/>
+    <label>Pre-Bid Sign-In Sheet: <input type="text" th:field="*{preBidSignInSheet}"/></label><br/>
+    <label>Bid Tabulation Sheet: <input type="text" th:field="*{bidTabulationSheet}"/></label><br/>
+    <label>Active: <input type="checkbox" th:field="*{active}"/></label><br/>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>

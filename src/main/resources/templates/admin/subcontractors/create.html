@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create SubContractor</title>
+</head>
+<body>
+<h1>Create SubContractor for Bid: <span th:text="${subContractorListing.bids.contractName}">Contract Name</span></h1>
+<form th:action="@{/admin/bids/{bidId}/subcontractors/create(bidId=${subContractorListing.bids.id})}" th:object="${subContractorListing}" method="post">
+    <label>MPID Number: <input type="text" th:field="*{mpidNumber}"/></label><br/>
+    <label>Document ID: <input type="text" th:field="*{documentId}"/></label><br/>
+    <label>Document URL: <input type="text" th:field="*{documentUrl}"/></label><br/>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>

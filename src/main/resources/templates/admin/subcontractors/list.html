@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SubContractors List</title>
+</head>
+<body>
+<h1>SubContractors List for Bid: <span th:text="${bid.contractName}">Contract Name</span></h1>
+<a th:href="@{/admin/bids/{bidId}/subcontractors/create(bidId=${bid.id})}">Create New SubContractor</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>MPID Number</th>
+        <th>Document ID</th>
+        <th>Document URL</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="subContractor : ${subContractorListings}">
+        <td th:text="${subContractor.id}">1</td>
+        <td th:text="${subContractor.mpidNumber}">MPID Number</td>
+        <td th:text="${subContractor.documentId}">Document ID</td>
+        <td th:text="${subContractor.documentUrl}">Document URL</td>
+        <td>
+            <a th:href="@{/admin/bids/{bidId}/subcontractors/edit/{id}(bidId=${bid.id}, id=${subContractor.id})}">Edit</a>
+            <a th:href="@{/admin/bids/{bidId}/subcontractors/delete/{id}(bidId=${bid.id}, id=${subContractor.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
