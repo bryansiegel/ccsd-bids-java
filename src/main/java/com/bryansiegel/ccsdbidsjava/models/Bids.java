@@ -2,6 +2,7 @@ package com.bryansiegel.ccsdbidsjava.models;
 
 import jakarta.persistence.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -11,9 +12,13 @@ public class Bids {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String contractName;
-    private String advertisementForBids;
+    @Lob
+    private byte[] advertisementForBids;
+    private String advertisementForBidsUrl;
+
     private String mpidNumber;
     private String documentUrl;
+
 
     private String preBidSignInSheet;
     private String bidTabulationSheet;
@@ -21,6 +26,7 @@ public class Bids {
 
     @OneToMany(mappedBy = "bids", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SubContractorListing> subContractorListings;
+
 
     public Long getId() {
         return id;
@@ -38,12 +44,20 @@ public class Bids {
         this.contractName = contractName;
     }
 
-    public String getAdvertisementForBids() {
+    public byte[] getAdvertisementForBids() {
         return advertisementForBids;
     }
 
-    public void setAdvertisementForBids(String advertisementForBids) {
+    public void setAdvertisementForBids(byte[] advertisementForBids) {
         this.advertisementForBids = advertisementForBids;
+    }
+
+    public String getAdvertisementForBidsUrl() {
+        return advertisementForBidsUrl;
+    }
+
+    public void setAdvertisementForBidsUrl(String advertisementForBidsUrl) {
+        this.advertisementForBidsUrl = advertisementForBidsUrl;
     }
 
     public String getMpidNumber() {
@@ -99,7 +113,8 @@ public class Bids {
         return "Bids{" +
                 "id=" + id +
                 ", contractName='" + contractName + '\'' +
-                ", advertisementForBids='" + advertisementForBids + '\'' +
+                ", advertisementForBids=" + Arrays.toString(advertisementForBids) +
+                ", advertisementForBidsUrl='" + advertisementForBidsUrl + '\'' +
                 ", mpidNumber='" + mpidNumber + '\'' +
                 ", documentUrl='" + documentUrl + '\'' +
                 ", preBidSignInSheet='" + preBidSignInSheet + '\'' +

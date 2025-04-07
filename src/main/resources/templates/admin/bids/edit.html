@@ -2,7 +2,7 @@
 <div th:insert="~{admin/fragments/header}"></div>
 
 <h1>Edit Bid</h1>
-<form th:action="@{/admin/bids/edit/{id}(id=${bid.id})}" th:object="${bid}" method="post" class="form">
+<form th:action="@{/admin/bids/edit/{id}(id=${bid.id})}" th:object="${bid}" method="post" class="form" enctype="multipart/form-data">
 
     <div class="form-group">
     <label class="form-label">Contract Name:</label>
@@ -10,8 +10,8 @@
     </div>
 
     <div class="form-group">
-    <label class="form-label">Advertisement For Bids: </label>
-    <input type="text" th:field="*{advertisementForBids}" class="form-control"/>
+        <label for="advertisementForBidsFile">Advertisement for Bids:</label>
+        <input type="file" id="advertisementForBidsFile" name="advertisementForBidsFile">
     </div>
 
     <div class="form-group">

@@ -4,20 +4,21 @@
 <div th:insert="~{admin/fragments/header}"></div>
 
 <h1>Create Bid</h1>
-<form th:action="@{/admin/bids/create}" th:object="${bid}" method="post" class="form">
+<form th:action="@{/admin/bids/create}" th:object="${bid}" method="post" class="form" enctype="multipart/form-data">
+
 
     <div class="form-group">
-    <label class="form-label">Contract Name:</label>
+        <label class="form-label">Contract Name:</label>
         <input type="text" th:field="*{contractName}" class="form-control"/>
     </div>
 
     <div class="form-group">
-    <label class="form-label">Advertisement For Bids:</label>
-        <input type="text" th:field="*{advertisementForBids}" class="form-control"/>
+        <label for="advertisementForBidsFile">Advertisement for Bids:</label>
+        <input type="file" id="advertisementForBidsFile" name="advertisementForBidsFile">
     </div>
 
     <div class="form-group">
-    <label class="form-label">MPID Number:</label>
+        <label class="form-label">MPID Number:</label>
         <input type="text" th:field="*{mpidNumber}" class="form-control"/>
     </div>
 
@@ -27,12 +28,12 @@
     </div>
 
     <div class="form-group">
-    <label class="form-label">Pre-Bid Sign-In Sheet:</label>
+        <label class="form-label">Pre-Bid Sign-In Sheet:</label>
         <input type="text" th:field="*{preBidSignInSheet}" class="form-control"/>
     </div>
 
     <div class="form-group">
-    <label class="form-label">Bid Tabulation Sheet:</label>
+        <label class="form-label">Bid Tabulation Sheet:</label>
         <input type="text" th:field="*{bidTabulationSheet}" class="form-control"/>
     </div>
 
@@ -42,7 +43,7 @@
     </div>
 
     <div class="form-group">
-    <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </form>
 

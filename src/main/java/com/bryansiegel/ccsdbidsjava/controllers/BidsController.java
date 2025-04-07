@@ -4,11 +4,14 @@ import com.bryansiegel.ccsdbidsjava.models.Bids;
 import com.bryansiegel.ccsdbidsjava.models.SubContractorListing;
 import com.bryansiegel.ccsdbidsjava.services.BidsService;
 import com.bryansiegel.ccsdbidsjava.services.SubContractorListingService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -38,10 +41,16 @@ public class BidsController {
     }
 
     @PostMapping("/create")
-    public String createBid(@ModelAttribute Bids bid) {
+    public String createBid(@ModelAttribute Bids bid, @RequestParam("advertisementForBidsFile") MultipartFile file) throws IOException {
+        if (!file.isEmpty()) {
+            bid.setAdvertisementForBids(file.getBytes());
+            String fileName = bid.getMpidNumber() + "-Ad-for-Bids.pdf";
+            bid.setAdvertisementForBidsUrl(fileName);
+        }
         bidsService.save(bid);
         return "redirect:/admin/bids";
     }
+
 
     @GetMapping("/edit/{id}")
     public String editBidForm(@PathVariable Long id, Model model) {
@@ -51,7 +60,12 @@ public class BidsController {
     }
 
     @PostMapping("/edit/{id}")
-    public String editBid(@PathVariable Long id, @ModelAttribute Bids bid) {
+    public String editBid(@PathVariable Long id, @ModelAttribute Bids bid, @RequestParam("advertisementForBidsFile") MultipartFile file) throws IOException {
+        if (!file.isEmpty()) {
+            bid.setAdvertisementForBids(file.getBytes());
+            String fileName = bid.getMpidNumber() + "-Ad-for-Bids.pdf";
+            bid.setAdvertisementForBidsUrl(fileName);
+        }
         bid.setId(id);
         bidsService.save(bid);
         return "redirect:/admin/bids";
@@ -106,5 +120,17 @@ public class BidsController {
     public String deleteSubContractor(@PathVariable Long bidId, @PathVariable Long id) {
         subContractorListingService.deleteById(id);
         return "redirect:/admin/bids/" + bidId + "/subcontractors";
+    }
+
+    //Downloads
+    @GetMapping("/download/{id}")
+    public ResponseEntity<byte[]> downloadAdvertisementForBids(@PathVariable Long id) {
+        Bids bid = bidsService.findById(id);
+        byte[] document = bid.getAdvertisementForBids();
+        String fileName = bid.getMpidNumber() + "-Ad-for-Bids.pdf";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDisposition(ContentDisposition.builder("inline").filename(fileName).build());
+        return new ResponseEntity<>(document, headers, HttpStatus.OK);
     }
 }
