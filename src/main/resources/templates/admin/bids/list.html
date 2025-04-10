@@ -8,8 +8,9 @@
     <thead>
     <tr>
         <th>ID</th>
-        <th>Contract Name</th>
+        <th>Bid Name</th>
         <th>Advertisement For Bids</th>
+        <th>Pre Bid Sign In Sheet</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -19,6 +20,10 @@
         <td th:text="${bid.contractName}">Contract Name</td>
         <td>
             <a th:href="@{/admin/bids/download/{id}(id=${bid.id})}" class="btn btn-success" target="_blank">View</a>
+        </td>
+        <td>
+<!--            <a th:href="@{/admin/bids/download/{id}(id=${bid.id})}" class="btn btn-success" target="_blank">View Ad</a>-->
+            <a th:href="@{/admin/bids/download/preBid/{id}(id=${bid.id})}" class="btn btn-success" target="_blank">View</a>
         </td>
         <td>
             <a th:href="@{/admin/bids/edit/{id}(id=${bid.id})}" class="btn btn-warning">Edit</a>

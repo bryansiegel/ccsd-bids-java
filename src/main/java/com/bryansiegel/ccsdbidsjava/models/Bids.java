@@ -19,14 +19,16 @@ public class Bids {
     private String mpidNumber;
     private String documentUrl;
 
+    @Lob
+    private byte[] preBidSignInSheet;
+    private String preBidSignInSheetUrl;
 
-    private String preBidSignInSheet;
+
     private String bidTabulationSheet;
     private boolean isActive = true;
 
     @OneToMany(mappedBy = "bids", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SubContractorListing> subContractorListings;
-
 
     public Long getId() {
         return id;
@@ -76,12 +78,20 @@ public class Bids {
         this.documentUrl = documentUrl;
     }
 
-    public String getPreBidSignInSheet() {
+    public byte[] getPreBidSignInSheet() {
         return preBidSignInSheet;
     }
 
-    public void setPreBidSignInSheet(String preBidSignInSheet) {
+    public void setPreBidSignInSheet(byte[] preBidSignInSheet) {
         this.preBidSignInSheet = preBidSignInSheet;
+    }
+
+    public String getPreBidSignInSheetUrl() {
+        return preBidSignInSheetUrl;
+    }
+
+    public void setPreBidSignInSheetUrl(String preBidSignInSheetUrl) {
+        this.preBidSignInSheetUrl = preBidSignInSheetUrl;
     }
 
     public String getBidTabulationSheet() {
@@ -117,7 +127,8 @@ public class Bids {
                 ", advertisementForBidsUrl='" + advertisementForBidsUrl + '\'' +
                 ", mpidNumber='" + mpidNumber + '\'' +
                 ", documentUrl='" + documentUrl + '\'' +
-                ", preBidSignInSheet='" + preBidSignInSheet + '\'' +
+                ", preBidSignInSheet=" + Arrays.toString(preBidSignInSheet) +
+                ", preBidSignInSheetUrl='" + preBidSignInSheetUrl + '\'' +
                 ", bidTabulationSheet='" + bidTabulationSheet + '\'' +
                 ", isActive=" + isActive +
                 ", subContractorListings=" + subContractorListings +

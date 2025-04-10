@@ -41,11 +41,18 @@ public class BidsController {
     }
 
     @PostMapping("/create")
-    public String createBid(@ModelAttribute Bids bid, @RequestParam("advertisementForBidsFile") MultipartFile file) throws IOException {
-        if (!file.isEmpty()) {
-            bid.setAdvertisementForBids(file.getBytes());
+    public String createBid(@ModelAttribute Bids bid,
+                            @RequestParam("advertisementForBidsFile") MultipartFile advertisementFile,
+                            @RequestParam("preBidSignInSheetFile") MultipartFile preBidFile) throws IOException {
+        if (!advertisementFile.isEmpty()) {
+            bid.setAdvertisementForBids(advertisementFile.getBytes());
             String fileName = bid.getMpidNumber() + "-Ad-for-Bids.pdf";
             bid.setAdvertisementForBidsUrl(fileName);
+        }
+        if (!preBidFile.isEmpty()) {
+            bid.setPreBidSignInSheet(preBidFile.getBytes());
+            String preBidFileName = bid.getMpidNumber() + "-Pre-Bid-Sign-In-Sheet.pdf";
+            bid.setPreBidSignInSheetUrl(preBidFileName);
         }
         bidsService.save(bid);
         return "redirect:/admin/bids";
@@ -60,11 +67,19 @@ public class BidsController {
     }
 
     @PostMapping("/edit/{id}")
-    public String editBid(@PathVariable Long id, @ModelAttribute Bids bid, @RequestParam("advertisementForBidsFile") MultipartFile file) throws IOException {
-        if (!file.isEmpty()) {
-            bid.setAdvertisementForBids(file.getBytes());
+    public String editBid(@PathVariable Long id,
+                          @ModelAttribute Bids bid,
+                          @RequestParam("advertisementForBidsFile") MultipartFile advertisementFile,
+                          @RequestParam("preBidSignInSheetFile") MultipartFile preBidFile) throws IOException {
+        if (!advertisementFile.isEmpty()) {
+            bid.setAdvertisementForBids(advertisementFile.getBytes());
             String fileName = bid.getMpidNumber() + "-Ad-for-Bids.pdf";
             bid.setAdvertisementForBidsUrl(fileName);
+        }
+        if (!preBidFile.isEmpty()) {
+            bid.setPreBidSignInSheet(preBidFile.getBytes());
+            String preBidFileName = bid.getMpidNumber() + "-Pre-Bid-Sign-In-Sheet.pdf";
+            bid.setPreBidSignInSheetUrl(preBidFileName);
         }
         bid.setId(id);
         bidsService.save(bid);
@@ -77,6 +92,7 @@ public class BidsController {
         return "redirect:/admin/bids";
     }
 
+    // SubContractors
     @GetMapping("/{bidId}/subcontractors")
     public String listSubContractors(@PathVariable Long bidId, Model model) {
         Bids bid = bidsService.findById(bidId);
@@ -128,6 +144,18 @@ public class BidsController {
         Bids bid = bidsService.findById(id);
         byte[] document = bid.getAdvertisementForBids();
         String fileName = bid.getMpidNumber() + "-Ad-for-Bids.pdf";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDisposition(ContentDisposition.builder("inline").filename(fileName).build());
+        return new ResponseEntity<>(document, headers, HttpStatus.OK);
+    }
+
+    //PreBid Sign In Sheet Download
+    @GetMapping("/download/preBid/{id}")
+    public ResponseEntity<byte[]> downloadPreBidSignInSheet(@PathVariable Long id) {
+        Bids bid = bidsService.findById(id);
+        byte[] document = bid.getPreBidSignInSheet();
+        String fileName = bid.getMpidNumber() + "-Pre-Bid-Sign-In-Sheet.pdf";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
         headers.setContentDisposition(ContentDisposition.builder("inline").filename(fileName).build());
