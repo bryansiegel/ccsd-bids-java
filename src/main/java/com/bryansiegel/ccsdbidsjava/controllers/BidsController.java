@@ -43,7 +43,8 @@ public class BidsController {
     @PostMapping("/create")
     public String createBid(@ModelAttribute Bids bid,
                             @RequestParam("advertisementForBidsFile") MultipartFile advertisementFile,
-                            @RequestParam("preBidSignInSheetFile") MultipartFile preBidFile) throws IOException {
+                            @RequestParam("preBidSignInSheetFile") MultipartFile preBidFile,
+                            @RequestParam("bidTabulationSheetFile") MultipartFile bidTabFile) throws IOException {
         if (!advertisementFile.isEmpty()) {
             bid.setAdvertisementForBids(advertisementFile.getBytes());
             String fileName = bid.getMpidNumber() + "-Ad-for-Bids.pdf";
@@ -53,6 +54,11 @@ public class BidsController {
             bid.setPreBidSignInSheet(preBidFile.getBytes());
             String preBidFileName = bid.getMpidNumber() + "-Pre-Bid-Sign-In-Sheet.pdf";
             bid.setPreBidSignInSheetUrl(preBidFileName);
+        }
+        if (!bidTabFile.isEmpty()) {
+            bid.setBidTabulationSheet(bidTabFile.getBytes());
+            String bidTabFileName = bid.getMpidNumber() + "-Bid-Tabulation-Sheet.pdf";
+            bid.setBidTabulationSheetUrl(bidTabFileName);
         }
         bidsService.save(bid);
         return "redirect:/admin/bids";
@@ -156,6 +162,18 @@ public class BidsController {
         Bids bid = bidsService.findById(id);
         byte[] document = bid.getPreBidSignInSheet();
         String fileName = bid.getMpidNumber() + "-Pre-Bid-Sign-In-Sheet.pdf";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDisposition(ContentDisposition.builder("inline").filename(fileName).build());
+        return new ResponseEntity<>(document, headers, HttpStatus.OK);
+    }
+
+    //Bid Tabulation Sheet Download
+    @GetMapping("/download/bidTab/{id}")
+    public ResponseEntity<byte[]> downloadBidTabulationSheet(@PathVariable Long id) {
+        Bids bid = bidsService.findById(id);
+        byte[] document = bid.getBidTabulationSheet();
+        String fileName = bid.getMpidNumber() + "-Bid-Tabulation-Sheet.pdf";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
         headers.setContentDisposition(ContentDisposition.builder("inline").filename(fileName).build());

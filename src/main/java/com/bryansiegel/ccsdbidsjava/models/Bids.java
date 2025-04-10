@@ -12,6 +12,7 @@ public class Bids {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String contractName;
+
     @Lob
     private byte[] advertisementForBids;
     private String advertisementForBidsUrl;
@@ -24,7 +25,10 @@ public class Bids {
     private String preBidSignInSheetUrl;
 
 
-    private String bidTabulationSheet;
+    @Lob
+    private byte[] bidTabulationSheet;
+    private String bidTabulationSheetUrl;
+
     private boolean isActive = true;
 
     @OneToMany(mappedBy = "bids", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -94,12 +98,20 @@ public class Bids {
         this.preBidSignInSheetUrl = preBidSignInSheetUrl;
     }
 
-    public String getBidTabulationSheet() {
+    public byte[] getBidTabulationSheet() {
         return bidTabulationSheet;
     }
 
-    public void setBidTabulationSheet(String bidTabulationSheet) {
+    public void setBidTabulationSheet(byte[] bidTabulationSheet) {
         this.bidTabulationSheet = bidTabulationSheet;
+    }
+
+    public String getBidTabulationSheetUrl() {
+        return bidTabulationSheetUrl;
+    }
+
+    public void setBidTabulationSheetUrl(String bidTabulationSheetUrl) {
+        this.bidTabulationSheetUrl = bidTabulationSheetUrl;
     }
 
     public boolean isActive() {
@@ -129,7 +141,8 @@ public class Bids {
                 ", documentUrl='" + documentUrl + '\'' +
                 ", preBidSignInSheet=" + Arrays.toString(preBidSignInSheet) +
                 ", preBidSignInSheetUrl='" + preBidSignInSheetUrl + '\'' +
-                ", bidTabulationSheet='" + bidTabulationSheet + '\'' +
+                ", bidTabulationSheet=" + Arrays.toString(bidTabulationSheet) +
+                ", bidTabulationSheetUrl='" + bidTabulationSheetUrl + '\'' +
                 ", isActive=" + isActive +
                 ", subContractorListings=" + subContractorListings +
                 '}';
