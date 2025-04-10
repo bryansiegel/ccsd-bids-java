@@ -18,7 +18,6 @@ public class Bids {
     private String advertisementForBidsUrl;
 
     private String mpidNumber;
-    private String documentUrl;
 
     @Lob
     private byte[] preBidSignInSheet;
@@ -31,6 +30,7 @@ public class Bids {
 
     private boolean isActive = true;
 
+    //SubContractor Listings
     @OneToMany(mappedBy = "bids", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SubContractorListing> subContractorListings;
 
@@ -72,14 +72,6 @@ public class Bids {
 
     public void setMpidNumber(String mpidNumber) {
         this.mpidNumber = mpidNumber;
-    }
-
-    public String getDocumentUrl() {
-        return documentUrl;
-    }
-
-    public void setDocumentUrl(String documentUrl) {
-        this.documentUrl = documentUrl;
     }
 
     public byte[] getPreBidSignInSheet() {
@@ -138,7 +130,6 @@ public class Bids {
                 ", advertisementForBids=" + Arrays.toString(advertisementForBids) +
                 ", advertisementForBidsUrl='" + advertisementForBidsUrl + '\'' +
                 ", mpidNumber='" + mpidNumber + '\'' +
-                ", documentUrl='" + documentUrl + '\'' +
                 ", preBidSignInSheet=" + Arrays.toString(preBidSignInSheet) +
                 ", preBidSignInSheetUrl='" + preBidSignInSheetUrl + '\'' +
                 ", bidTabulationSheet=" + Arrays.toString(bidTabulationSheet) +

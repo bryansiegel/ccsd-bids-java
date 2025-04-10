@@ -7,7 +7,6 @@
 <table class="table table-striped mt-3">
     <thead>
     <tr>
-        <th>ID</th>
         <th>Bid Name</th>
         <th>Advertisement For Bids</th>
         <th>Pre Bid Sign In Sheet</th>
@@ -17,7 +16,6 @@
     </thead>
     <tbody>
     <tr th:each="bid : ${bidsList}">
-        <td th:text="${bid.id}">1</td>
         <td th:text="${bid.contractName}">Contract Name</td>
         <td>
             <a th:if="${bid.advertisementForBids != null and !#arrays.isEmpty(bid.advertisementForBids)}"

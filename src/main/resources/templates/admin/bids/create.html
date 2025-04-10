@@ -3,35 +3,34 @@
 
 <div th:insert="~{admin/fragments/header}"></div>
 
-<h1>Create Bid</h1>
+<h1>Create A Bid</h1>
 <form th:action="@{/admin/bids/create}" th:object="${bid}" method="post" class="form" enctype="multipart/form-data">
+
     <div class="form-group">
-        <label class="form-label">Bid Name:</label>
-        <input type="text" th:field="*{contractName}" class="form-control"/>
+        <label for="active" class="form-label">Active:</label>
+        <input id="active" type="checkbox" th:field="*{active}" class="form-check"/>
     </div>
     <div class="form-group">
-        <label class="form-label">MPID Number:</label>
-        <input type="text" th:field="*{mpidNumber}" class="form-control"/>
+        <label for="bidName" class="form-label">Bid Name:</label>
+        <input id="bidName" type="text" th:field="*{contractName}" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label for="mpidNumber" class="form-label">MPID Number:</label>
+        <input id="mpidNumber" type="text" th:field="*{mpidNumber}" class="form-control"/>
     </div>
     <div class="form-group">
         <label for="advertisementForBidsFile">Advertisement for Bids:</label>
-        <input type="file" id="advertisementForBidsFile" name="advertisementForBidsFile">
+        <input type="file" id="advertisementForBidsFile" name="advertisementForBidsFile" class="form-control-file">
     </div>
+    <hr>
     <div class="form-group">
         <label for="preBidSignInSheetFile">Pre-Bid Sign-In Sheet:</label>
-        <input type="file" id="preBidSignInSheetFile" name="preBidSignInSheetFile">
+        <input type="file" id="preBidSignInSheetFile" name="preBidSignInSheetFile" class="form-control-file">
     </div>
+    <hr>
     <div class="form-group">
         <label for="bidTabulationSheetFile">Bid Tabulation Sheet:</label>
-        <input type="file" id="bidTabulationSheetFile" name="bidTabulationSheetFile">
-    </div>
-    <div class="form-group">
-        <label>Document URL:</label>
-        <input type="text" th:field="*{documentUrl}" class="form-control"/>
-    </div>
-    <div class="form-group">
-        <label class="form-label">Active:</label>
-        <input type="checkbox" th:field="*{active}" class="form-check"/>
+        <input type="file" id="bidTabulationSheetFile" name="bidTabulationSheetFile" class="form-control-file">
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Save</button>
