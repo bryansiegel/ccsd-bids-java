@@ -26,6 +26,12 @@ public class SubContractorListing {
     @Lob
     private byte[] subContractorDocument; // Stores the file's binary data
 
+
+    // Constants
+    public static final String SUBCONTRACTOR_DOCUMENT_ID = "00 43 36";
+    public static final String SUBCONTRACTOR_DOCUMENT_ID_A = "00 43 36A";
+    public static final String SUBCONTRACTOR_DOCUMENT_ID_B = "00 43 36B";
+
     public long getId() {
         return id;
     }
@@ -49,6 +55,8 @@ public class SubContractorListing {
     public void setSubContractorCompanyName(String subContractorCompanyName) {
         this.subContractorCompanyName = subContractorCompanyName;
     }
+
+
 
     public String getSubContractorDocumentId() {
         return subContractorDocumentId;

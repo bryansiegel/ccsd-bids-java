@@ -84,17 +84,28 @@ public class BidsController {
                           @RequestParam("advertisementForBidsFile") MultipartFile advertisementFile,
                           @RequestParam("preBidSignInSheetFile") MultipartFile preBidFile,
                           @RequestParam("bidTabulationSheetFile") MultipartFile bidTabFile) throws IOException {
+        // Fetch the existing bid from the database
+        Bids existingBid = bidsService.findById(id);
+
+        // Update fields
+        existingBid.setContractName(bid.getContractName());
+        existingBid.setMpidNumber(bid.getMpidNumber());
+        existingBid.setActive(bid.isActive());
+
+        // Update files only if new files are uploaded
         if (!advertisementFile.isEmpty()) {
-            bid.setAdvertisementForBids(advertisementFile.getBytes());
+            existingBid.setAdvertisementForBids(advertisementFile.getBytes());
         }
         if (!preBidFile.isEmpty()) {
-            bid.setPreBidSignInSheet(preBidFile.getBytes());
+            existingBid.setPreBidSignInSheet(preBidFile.getBytes());
         }
         if (!bidTabFile.isEmpty()) {
-            bid.setBidTabulationSheet(bidTabFile.getBytes());
+            existingBid.setBidTabulationSheet(bidTabFile.getBytes());
         }
-        bid.setId(id);
-        bidsService.save(bid);
+
+        // Save the updated bid
+        bidsService.save(existingBid);
+
         return "redirect:/admin/bids";
     }
 
@@ -124,8 +135,7 @@ public class BidsController {
     @PostMapping("/{bidId}/subcontractors/create")
     public String createSubContractor(@PathVariable Long bidId,
                                       @ModelAttribute SubContractorListing subContractorListing,
-                                      @RequestParam("subContractorDocument") MultipartFile subContractfile) throws IOException
-    {
+                                      @RequestParam("subContractorDocument") MultipartFile subContractfile) throws IOException {
         // Fetch the associated bid
         Bids bid = bidsService.findById(bidId);
         subContractorListing.setBids(bid);
@@ -143,7 +153,6 @@ public class BidsController {
     }
 
 
-
     @GetMapping("/{bidId}/subcontractors/edit/{id}")
     public String editSubContractorForm(@PathVariable Long bidId, @PathVariable Long id, Model model) {
         SubContractorListing subContractorListing = subContractorListingService.findById(id);
@@ -155,14 +164,21 @@ public class BidsController {
     public String editSubContractor(@PathVariable Long bidId, @PathVariable Long id,
                                     @ModelAttribute SubContractorListing subContractorListing,
                                     @RequestParam("subContractorDocument") MultipartFile file) throws IOException {
-        subContractorListing.setId(id);
-        subContractorListing.setBids(bidsService.findById(bidId));
+        // Fetch the existing subcontractor listing from the database
+        SubContractorListing existingSubContractor = subContractorListingService.findById(id);
 
+        // Update fields
+        existingSubContractor.setSubContractorCompanyName(subContractorListing.getSubContractorCompanyName());
+        existingSubContractor.setSubContractorDocumentId(subContractorListing.getSubContractorDocumentId());
+        existingSubContractor.setSubContractorDocumentUrl(subContractorListing.getSubContractorDocumentUrl());
+
+        // Update file only if a new file is uploaded
         if (file != null && !file.isEmpty()) {
-            subContractorListing.setSubContractorDocument(file.getBytes());
+            existingSubContractor.setSubContractorDocument(file.getBytes());
         }
 
-        subContractorListingService.save(subContractorListing);
+        // Save the updated subcontractor listing
+        subContractorListingService.save(existingSubContractor);
 
         return "redirect:/admin/bids/" + bidId + "/subcontractors";
     }
@@ -203,6 +219,7 @@ public class BidsController {
         headers.setContentDisposition(ContentDisposition.builder("inline").filename("Bid-Tabulation-Sheet.pdf").build());
         return new ResponseEntity<>(document, headers, HttpStatus.OK);
     }
+
     @GetMapping("/{bidId}/subcontractors/download/{id}")
     public ResponseEntity<byte[]> downloadSubContractorDocument(@PathVariable Long bidId, @PathVariable Long id) {
         SubContractorListing subContractorListing = subContractorListingService.findById(id);
