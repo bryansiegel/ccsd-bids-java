@@ -4,7 +4,7 @@
 <h1>SubContractors List for Bid: <span th:text="${bid.contractName}">Contract Name</span></h1>
 
 
-<a th:href="@{/admin/bids/{bidId}/subcontractors/create(bidId=${bid.id})}" class="btn btn-primary mb-3">Create New SubContractor</a>
+<a th:href="@{/admin/bids/{bidId}/subcontractors/create(bidId=${bid.id})}" class="btn btn-primary">Create New SubContractor</a><a th:href="@{/admin/bids/{bidId}/view(bidId=${bid.id})}" class="btn btn-secondary"><< Back to <span th:text="${bid.contractName}"></span> Bid</a>
 
 <table class="table table-striped mt-3">
     <thead>

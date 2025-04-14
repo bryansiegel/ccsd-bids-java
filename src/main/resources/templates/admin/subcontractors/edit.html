@@ -3,7 +3,7 @@
 
 <h1>Edit SubContractor for Bid: <span th:text="${subContractorListing.bids.contractName}">Contract Name</span></h1>
 
-<form th:action="@{/admin/bids/{bidId}/subcontractors/edit/{id}(bidId=${subContractorListing.bids.id}, id=${subContractorListing.id})}" th:object="${subContractorListing}" method="post" class="form">
+<form th:action="@{/admin/bids/{bidId}/subcontractors/edit/{id}(bidId=${subContractorListing.bids.id}, id=${subContractorListing.id})}" th:object="${subContractorListing}" method="post" enctype="multipart/form-data" class="form">
     <div class="form-group">
         <label>SubContractor</label>
         <input type="text" th:field="*{subContractorCompanyName}" class="form-control" required/>

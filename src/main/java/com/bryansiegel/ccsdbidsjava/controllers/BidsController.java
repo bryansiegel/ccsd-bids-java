@@ -13,6 +13,7 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -113,6 +114,21 @@ public class BidsController {
     public String deleteBid(@PathVariable Long id) {
         bidsService.deleteById(id);
         return "redirect:/admin/bids";
+    }
+
+    @GetMapping("/{bidId}/view")
+    public String viewBid(@PathVariable Long bidId, Model model) {
+        Bids bid = bidsService.findById(bidId);
+        if (bid == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Bid not found");
+        }
+
+        List<SubContractorListing> subContractors = subContractorListingService.findByBidId(bidId);
+
+        model.addAttribute("bid", bid);
+        model.addAttribute("subContractors", subContractors);
+
+        return "admin/bids/view";
     }
 
     // SubContractors

@@ -33,6 +33,7 @@
                class="btn btn-success" target="_blank">View</a>
         </td>
         <td>
+            <a th:href="@{/admin/bids/{bidId}/view(bidId=${bid.id})}" class="btn btn-info">View</a>
             <a th:href="@{/admin/bids/edit/{id}(id=${bid.id})}" class="btn btn-warning">Edit</a>
             <a th:href="@{/admin/bids/delete/{id}(id=${bid.id})}" class="btn btn-danger">Delete</a>
             <a th:href="@{/admin/bids/{id}/subcontractors(id=${bid.id})}" class="btn btn-info">SubContractors</a>

@@ -28,4 +28,8 @@ public class SubContractorListingService {
     public void deleteById(Long id) {
         subContractorListingRepository.deleteById(id);
     }
+
+    public List<SubContractorListing> findByBidId(Long bidId) {
+        return subContractorListingRepository.findByBidsId(bidId);
+    }
 }

@@ -1,0 +1,39 @@
+<head th:insert="~{admin/fragments/head}"></head>
+<div th:insert="~{admin/fragments/header}"></div>
+
+<h1>Bid Details: <span th:text="${bid.contractName}">Contract Name</span></h1>
+
+<div>
+    <h3>Bid Information</h3>
+    <p><strong>MPID Number:</strong> <span th:text="${bid.mpidNumber}">MPID Number</span></p>
+    <p><strong>Advertisement For Bids URL:</strong> <a th:href="${bid.advertisementForBidsUrl}" target="_blank" th:text="${bid.advertisementForBidsUrl ?: 'N/A'}">Advertisement For Bids</a></p>
+    <p><strong>Pre-Bid Sign-In Sheet URL:</strong> <a th:href="${bid.preBidSignInSheetUrl}" target="_blank" th:text="${bid.preBidSignInSheetUrl ?: 'N/A'}">Pre-Bid Sign-In Sheet</a></p>
+    <p><strong>Bid Tabulation Sheet URL:</strong> <a th:href="${bid.bidTabulationSheetUrl}" target="_blank" th:text="${bid.bidTabulationSheetUrl ?: 'N/A'}">Bid Tabulation Sheet</a></p>
+    <p><strong>Active:</strong> <span th:text="${bid.active ? 'Yes' : 'No'}">Active</span></p>
+</div>
+
+<div>
+    <h3>SubContractors</h3>
+    <table class="table table-striped mt-3">
+        <thead>
+        <tr>
+            <th>SubContractor</th>
+            <th>Document ID</th>
+            <th>Document URL</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="subContractor : ${subContractors}">
+            <td th:text="${subContractor.subContractorCompanyName}">SubContractor</td>
+            <td th:text="${subContractor.subContractorDocumentId ?: 'N/A'}">Document ID</td>
+            <td>
+                <a th:href="${subContractor.subContractorDocumentUrl}" target="_blank" th:text="${subContractor.subContractorDocumentUrl ?: 'N/A'}">Document URL</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<a th:href="@{/admin/bids}" class="btn btn-secondary"><< Back to Bids List</a>
+
+<footer th:insert="~{admin/fragments/footer}"></footer>
