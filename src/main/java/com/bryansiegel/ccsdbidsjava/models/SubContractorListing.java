@@ -2,20 +2,29 @@ package com.bryansiegel.ccsdbidsjava.models;
 
 import jakarta.persistence.*;
 
+import java.util.Arrays;
+
 @Entity
 public class SubContractorListing {
 
     @Id
-    @GeneratedValue( strategy = jakarta.persistence.GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String mpidNumber;
-    private String documentId;
-    private String documentUrl;
+    private String subContractorCompanyName;
+    private String subContractorDocumentId;
+
+
+
+
 
     @ManyToOne
     @JoinColumn(name = "bids_id")
     private Bids bids;
+    private String subContractorDocumentUrl;
+
+    @Lob
+    private byte[] subContractorDocument; // Stores the file's binary data
 
     public long getId() {
         return id;
@@ -25,28 +34,28 @@ public class SubContractorListing {
         this.id = id;
     }
 
-    public String getMpidNumber() {
-        return mpidNumber;
+    public byte[] getSubContractorDocument() {
+        return subContractorDocument;
     }
 
-    public void setMpidNumber(String mpidNumber) {
-        this.mpidNumber = mpidNumber;
+    public void setSubContractorDocument(byte[] subContractorDocument) {
+        this.subContractorDocument = subContractorDocument;
     }
 
-    public String getDocumentId() {
-        return documentId;
+    public String getSubContractorCompanyName() {
+        return subContractorCompanyName;
     }
 
-    public void setDocumentId(String documentId) {
-        this.documentId = documentId;
+    public void setSubContractorCompanyName(String subContractorCompanyName) {
+        this.subContractorCompanyName = subContractorCompanyName;
     }
 
-    public String getDocumentUrl() {
-        return documentUrl;
+    public String getSubContractorDocumentId() {
+        return subContractorDocumentId;
     }
 
-    public void setDocumentUrl(String documentUrl) {
-        this.documentUrl = documentUrl;
+    public void setSubContractorDocumentId(String subContractorDocumentId) {
+        this.subContractorDocumentId = subContractorDocumentId;
     }
 
     public Bids getBids() {
@@ -57,14 +66,23 @@ public class SubContractorListing {
         this.bids = bids;
     }
 
+    public String getSubContractorDocumentUrl() {
+        return subContractorDocumentUrl;
+    }
+
+    public void setSubContractorDocumentUrl(String subContractorDocumentUrl) {
+        this.subContractorDocumentUrl = subContractorDocumentUrl;
+    }
+
     @Override
     public String toString() {
         return "SubContractorListing{" +
                 "id=" + id +
-                ", mpidNumber='" + mpidNumber + '\'' +
-                ", documentId='" + documentId + '\'' +
-                ", documentUrl='" + documentUrl + '\'' +
+                ", subContractorDocument=" + Arrays.toString(subContractorDocument) +
+                ", subContractorCompanyName='" + subContractorCompanyName + '\'' +
+                ", subContractorDocumentId='" + subContractorDocumentId + '\'' +
                 ", bids=" + bids +
+                ", subContractorDocumentUrl='" + subContractorDocumentUrl + '\'' +
                 '}';
     }
 }

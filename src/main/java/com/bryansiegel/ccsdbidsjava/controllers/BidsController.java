@@ -4,14 +4,20 @@ import com.bryansiegel.ccsdbidsjava.models.Bids;
 import com.bryansiegel.ccsdbidsjava.models.SubContractorListing;
 import com.bryansiegel.ccsdbidsjava.services.BidsService;
 import com.bryansiegel.ccsdbidsjava.services.SubContractorListingService;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
+import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Controller
@@ -19,12 +25,19 @@ import java.util.List;
 public class BidsController {
 
     private final BidsService bidsService;
-
     private final SubContractorListingService subContractorListingService;
 
     public BidsController(BidsService bidsService, SubContractorListingService subContractorListingService) {
         this.bidsService = bidsService;
         this.subContractorListingService = subContractorListingService;
+    }
+
+    //In order to make subContractorDocument file upload work
+    @InitBinder
+    protected void initBinder(HttpServletRequest request,
+                              ServletRequestDataBinder binder) throws ServletException {
+        binder.registerCustomEditor(byte[].class,
+                new ByteArrayMultipartFileEditor());
     }
 
     @GetMapping
@@ -47,23 +60,16 @@ public class BidsController {
                             @RequestParam("bidTabulationSheetFile") MultipartFile bidTabFile) throws IOException {
         if (!advertisementFile.isEmpty()) {
             bid.setAdvertisementForBids(advertisementFile.getBytes());
-            String fileName = bid.getMpidNumber() + "-Ad-for-Bids.pdf";
-            bid.setAdvertisementForBidsUrl(fileName);
         }
         if (!preBidFile.isEmpty()) {
             bid.setPreBidSignInSheet(preBidFile.getBytes());
-            String preBidFileName = bid.getMpidNumber() + "-Pre-Bid-Sign-In-Sheet.pdf";
-            bid.setPreBidSignInSheetUrl(preBidFileName);
         }
         if (!bidTabFile.isEmpty()) {
             bid.setBidTabulationSheet(bidTabFile.getBytes());
-            String bidTabFileName = bid.getMpidNumber() + "-Bid-Tabulation-Sheet.pdf";
-            bid.setBidTabulationSheetUrl(bidTabFileName);
         }
         bidsService.save(bid);
         return "redirect:/admin/bids";
     }
-
 
     @GetMapping("/edit/{id}")
     public String editBidForm(@PathVariable Long id, Model model) {
@@ -76,16 +82,16 @@ public class BidsController {
     public String editBid(@PathVariable Long id,
                           @ModelAttribute Bids bid,
                           @RequestParam("advertisementForBidsFile") MultipartFile advertisementFile,
-                          @RequestParam("preBidSignInSheetFile") MultipartFile preBidFile) throws IOException {
+                          @RequestParam("preBidSignInSheetFile") MultipartFile preBidFile,
+                          @RequestParam("bidTabulationSheetFile") MultipartFile bidTabFile) throws IOException {
         if (!advertisementFile.isEmpty()) {
             bid.setAdvertisementForBids(advertisementFile.getBytes());
-            String fileName = bid.getMpidNumber() + "-Ad-for-Bids.pdf";
-            bid.setAdvertisementForBidsUrl(fileName);
         }
         if (!preBidFile.isEmpty()) {
             bid.setPreBidSignInSheet(preBidFile.getBytes());
-            String preBidFileName = bid.getMpidNumber() + "-Pre-Bid-Sign-In-Sheet.pdf";
-            bid.setPreBidSignInSheetUrl(preBidFileName);
+        }
+        if (!bidTabFile.isEmpty()) {
+            bid.setBidTabulationSheet(bidTabFile.getBytes());
         }
         bid.setId(id);
         bidsService.save(bid);
@@ -116,12 +122,27 @@ public class BidsController {
     }
 
     @PostMapping("/{bidId}/subcontractors/create")
-    public String createSubContractor(@PathVariable Long bidId, @ModelAttribute SubContractorListing subContractorListing) {
+    public String createSubContractor(@PathVariable Long bidId,
+                                      @ModelAttribute SubContractorListing subContractorListing,
+                                      @RequestParam("subContractorDocument") MultipartFile subContractfile) throws IOException
+    {
+        // Fetch the associated bid
         Bids bid = bidsService.findById(bidId);
         subContractorListing.setBids(bid);
+
+        // Explicitly handle the file upload
+        if (subContractfile != null && !subContractfile.isEmpty()) {
+
+            subContractorListing.setSubContractorDocument(subContractfile.getBytes());
+        }
+
+        // Save the subcontractor listing
         subContractorListingService.save(subContractorListing);
+
         return "redirect:/admin/bids/" + bidId + "/subcontractors";
     }
+
+
 
     @GetMapping("/{bidId}/subcontractors/edit/{id}")
     public String editSubContractorForm(@PathVariable Long bidId, @PathVariable Long id, Model model) {
@@ -131,10 +152,18 @@ public class BidsController {
     }
 
     @PostMapping("/{bidId}/subcontractors/edit/{id}")
-    public String editSubContractor(@PathVariable Long bidId, @PathVariable Long id, @ModelAttribute SubContractorListing subContractorListing) {
+    public String editSubContractor(@PathVariable Long bidId, @PathVariable Long id,
+                                    @ModelAttribute SubContractorListing subContractorListing,
+                                    @RequestParam("subContractorDocument") MultipartFile file) throws IOException {
         subContractorListing.setId(id);
         subContractorListing.setBids(bidsService.findById(bidId));
+
+        if (file != null && !file.isEmpty()) {
+            subContractorListing.setSubContractorDocument(file.getBytes());
+        }
+
         subContractorListingService.save(subContractorListing);
+
         return "redirect:/admin/bids/" + bidId + "/subcontractors";
     }
 
@@ -144,39 +173,43 @@ public class BidsController {
         return "redirect:/admin/bids/" + bidId + "/subcontractors";
     }
 
-    //Downloads
+    // Downloads
     @GetMapping("/download/{id}")
     public ResponseEntity<byte[]> downloadAdvertisementForBids(@PathVariable Long id) {
         Bids bid = bidsService.findById(id);
         byte[] document = bid.getAdvertisementForBids();
-        String fileName = bid.getMpidNumber() + "-Ad-for-Bids.pdf";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
-        headers.setContentDisposition(ContentDisposition.builder("inline").filename(fileName).build());
+        headers.setContentDisposition(ContentDisposition.builder("inline").filename("Ad-for-Bids.pdf").build());
         return new ResponseEntity<>(document, headers, HttpStatus.OK);
     }
 
-    //PreBid Sign In Sheet Download
     @GetMapping("/download/preBid/{id}")
     public ResponseEntity<byte[]> downloadPreBidSignInSheet(@PathVariable Long id) {
         Bids bid = bidsService.findById(id);
         byte[] document = bid.getPreBidSignInSheet();
-        String fileName = bid.getMpidNumber() + "-Pre-Bid-Sign-In-Sheet.pdf";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
-        headers.setContentDisposition(ContentDisposition.builder("inline").filename(fileName).build());
+        headers.setContentDisposition(ContentDisposition.builder("inline").filename("Pre-Bid-Sign-In-Sheet.pdf").build());
         return new ResponseEntity<>(document, headers, HttpStatus.OK);
     }
 
-    //Bid Tabulation Sheet Download
     @GetMapping("/download/bidTab/{id}")
     public ResponseEntity<byte[]> downloadBidTabulationSheet(@PathVariable Long id) {
         Bids bid = bidsService.findById(id);
         byte[] document = bid.getBidTabulationSheet();
-        String fileName = bid.getMpidNumber() + "-Bid-Tabulation-Sheet.pdf";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
-        headers.setContentDisposition(ContentDisposition.builder("inline").filename(fileName).build());
+        headers.setContentDisposition(ContentDisposition.builder("inline").filename("Bid-Tabulation-Sheet.pdf").build());
+        return new ResponseEntity<>(document, headers, HttpStatus.OK);
+    }
+    @GetMapping("/{bidId}/subcontractors/download/{id}")
+    public ResponseEntity<byte[]> downloadSubContractorDocument(@PathVariable Long bidId, @PathVariable Long id) {
+        SubContractorListing subContractorListing = subContractorListingService.findById(id);
+        byte[] document = subContractorListing.getSubContractorDocument();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDisposition(ContentDisposition.builder("inline").filename("SubContractor-Document.pdf").build());
         return new ResponseEntity<>(document, headers, HttpStatus.OK);
     }
 }

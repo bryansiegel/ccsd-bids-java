@@ -3,12 +3,13 @@
 
 <h1>SubContractors List for Bid: <span th:text="${bid.contractName}">Contract Name</span></h1>
 
-<a th:href="@{/admin/bids/{bidId}/subcontractors/create(bidId=${bid.id})}" class="btn btn-primary">Create New SubContractor</a>
+
+<a th:href="@{/admin/bids/{bidId}/subcontractors/create(bidId=${bid.id})}" class="btn btn-primary mb-3">Create New SubContractor</a>
 
 <table class="table table-striped mt-3">
     <thead>
     <tr>
-        <th>ID</th>
+        <th>SubContractor</th>
         <th>MPID Number</th>
         <th>Document ID</th>
         <th>Document URL</th>
@@ -17,10 +18,9 @@
     </thead>
     <tbody>
     <tr th:each="subContractor : ${subContractorListings}">
-        <td th:text="${subContractor.id}">1</td>
-        <td th:text="${subContractor.mpidNumber}">MPID Number</td>
-        <td th:text="${subContractor.documentId}">Document ID</td>
-        <td th:text="${subContractor.documentUrl}">Document URL</td>
+        <td th:text="${subContractor.subContractorCompanyName}">SubContractor</td>
+        <td th:text="${subContractor.bids.mpidNumber}">MPID Number</td>
+        <td th:text="${subContractor.subContractorDocumentId ?: 'N/A'}">Document ID</td>        <td th:text="${subContractor.bids.mpidNumber + '-' + subContractor.subContractorCompanyName}">Document URL</td>
         <td>
             <a th:href="@{/admin/bids/{bidId}/subcontractors/edit/{id}(bidId=${bid.id}, id=${subContractor.id})}" class="btn btn-info">Edit</a>
             <a th:href="@{/admin/bids/{bidId}/subcontractors/delete/{id}(bidId=${bid.id}, id=${subContractor.id})}" class="btn btn-danger">Delete</a>
@@ -28,5 +28,7 @@
     </tr>
     </tbody>
 </table>
+
+<a th:href="@{/admin/bids/{bidId}(bidId=${bid.id})}" class="btn btn-secondary mb-3"><< Back to <span th:text="${bid.contractName}"></span> Bid</a>
 
 <footer th:insert="~{admin/fragments/footer}"></footer>

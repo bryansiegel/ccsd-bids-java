@@ -1,0 +1,210 @@
+2025-04-14T09:06:18.589-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] c.b.c.CcsdBidsJavaApplication            : Starting CcsdBidsJavaApplication using Java 21.0.6 with PID 89110 (/Users/darthsr/Sites/java/ccsd-bids-java/target/classes started by darthsr in /Users/darthsr/Sites/java/ccsd-bids-java)
+2025-04-14T09:06:18.590-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] c.b.c.CcsdBidsJavaApplication            : No active profile set, falling back to 1 default profile: "default"
+2025-04-14T09:06:18.606-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-04-14T09:06:18.607-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-04-14T09:06:18.856-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-14T09:06:18.879-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19 ms. Found 2 JPA repository interfaces.
+2025-04-14T09:06:19.093-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-14T09:06:19.098-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-14T09:06:19.098-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-14T09:06:19.112-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-14T09:06:19.112-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 505 ms
+2025-04-14T09:06:19.182-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-14T09:06:19.200-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-14T09:06:19.210-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-14T09:06:19.305-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-14T09:06:19.316-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-14T09:06:19.383-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5e58d616
+2025-04-14T09:06:19.384-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-14T09:06:19.419-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 9.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-14T09:06:19.741-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-14T09:06:19.769-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-14T09:06:19.879-07:00  WARN 89110 --- [ccsd-bids-java] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-14T09:06:19.885-07:00  WARN 89110 --- [ccsd-bids-java] [restartedMain] o.s.security.core.userdetails.User       : User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2025-04-14T09:06:19.985-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2025-04-14T09:06:20.043-07:00 DEBUG 89110 --- [ccsd-bids-java] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 22 mappings in 'requestMappingHandlerMapping'
+2025-04-14T09:06:20.073-07:00 DEBUG 89110 --- [ccsd-bids-java] [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-04-14T09:06:20.119-07:00 DEBUG 89110 --- [ccsd-bids-java] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-04-14T09:06:20.147-07:00 DEBUG 89110 --- [ccsd-bids-java] [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-04-14T09:06:20.187-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-04-14T09:06:20.206-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-14T09:06:20.211-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] c.b.c.CcsdBidsJavaApplication            : Started CcsdBidsJavaApplication in 1.791 seconds (process running for 2.057)
+2025-04-14T09:06:34.930-07:00  INFO 89110 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [asw={"lang":"en"};] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2025-04-14T09:06:34.933-07:00  INFO 89110 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-14T09:06:34.933-07:00  INFO 89110 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-14T09:06:34.934-07:00 DEBUG 89110 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2025-04-14T09:06:34.934-07:00 DEBUG 89110 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2025-04-14T09:06:34.934-07:00 DEBUG 89110 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2025-04-14T09:06:34.935-07:00 DEBUG 89110 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@532167ac
+2025-04-14T09:06:34.935-07:00 DEBUG 89110 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@b6284ba
+2025-04-14T09:06:34.935-07:00 DEBUG 89110 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-04-14T09:06:34.935-07:00  INFO 89110 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-04-14T09:06:34.961-07:00 DEBUG 89110 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/admin/bids/152/subcontractors/create", parameters={multipart}
+2025-04-14T09:06:34.964-07:00 DEBUG 89110 --- [ccsd-bids-java] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bryansiegel.ccsdbidsjava.controllers.BidsController#createSubContractor(Long, SubContractorListing, MultipartFile)
+2025-04-14T09:06:34.984-07:00  WARN 89110 --- [ccsd-bids-java] [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [1] in public java.lang.String com.bryansiegel.ccsdbidsjava.controllers.BidsController.createSubContractor(java.lang.Long,com.bryansiegel.ccsdbidsjava.models.SubContractorListing,org.springframework.web.multipart.MultipartFile) throws java.io.IOException: [Field error in object 'subContractorListing' on field 'subContractorDocument': rejected value [org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile@27aec4a]; codes [typeMismatch.subContractorListing.subContractorDocument,typeMismatch.subContractorDocument,typeMismatch.[B,typeMismatch]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [subContractorListing.subContractorDocument,subContractorDocument]; arguments []; default message [subContractorDocument]]; default message [Failed to convert property value of type 'org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile' to required type 'byte[]' for property 'subContractorDocument'; Cannot convert value of type 'org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile' to required type 'byte' for property 'subContractorDocument[0]': PropertyEditor [org.springframework.beans.propertyeditors.CustomNumberEditor] returned inappropriate value of type 'org.springframework.web.multipart.support.StandardMultipartHttpServletRequest$StandardMultipartFile']] ]
+2025-04-14T09:06:34.985-07:00 DEBUG 89110 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 400 BAD_REQUEST
+2025-04-14T09:06:34.988-07:00 DEBUG 89110 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : "ERROR" dispatch for POST "/error", parameters={multipart}
+2025-04-14T09:06:34.988-07:00 DEBUG 89110 --- [ccsd-bids-java] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#errorHtml(HttpServletRequest, HttpServletResponse)
+2025-04-14T09:06:34.993-07:00 DEBUG 89110 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, text/html;q=0.8]
+2025-04-14T09:06:34.996-07:00 DEBUG 89110 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Exiting from "ERROR" dispatch, status 400
+2025-04-14T09:14:02.199-07:00  INFO 89110 --- [ccsd-bids-java] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-04-14T09:14:02.215-07:00  INFO 89110 --- [ccsd-bids-java] [Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-14T09:14:02.226-07:00  INFO 89110 --- [ccsd-bids-java] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-14T09:14:02.233-07:00  INFO 89110 --- [ccsd-bids-java] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-14T09:14:02.239-07:00  INFO 89110 --- [ccsd-bids-java] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-14T09:14:02.249-07:00  INFO 89110 --- [ccsd-bids-java] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-04-14T09:14:02.301-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] c.b.c.CcsdBidsJavaApplication            : Starting CcsdBidsJavaApplication using Java 21.0.6 with PID 89110 (/Users/darthsr/Sites/java/ccsd-bids-java/target/classes started by darthsr in /Users/darthsr/Sites/java/ccsd-bids-java)
+2025-04-14T09:14:02.301-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] c.b.c.CcsdBidsJavaApplication            : No active profile set, falling back to 1 default profile: "default"
+2025-04-14T09:14:02.368-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-14T09:14:02.372-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 2 JPA repository interfaces.
+2025-04-14T09:14:02.425-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-14T09:14:02.426-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-14T09:14:02.426-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-14T09:14:02.430-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-14T09:14:02.430-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 128 ms
+2025-04-14T09:14:02.464-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-14T09:14:02.465-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-14T09:14:02.469-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-14T09:14:02.470-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-04-14T09:14:02.473-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@11411d1e
+2025-04-14T09:14:02.473-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-04-14T09:14:02.474-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 9.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-14T09:14:02.499-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-14T09:14:02.510-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-14T09:14:02.543-07:00  WARN 89110 --- [ccsd-bids-java] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-14T09:14:02.547-07:00  WARN 89110 --- [ccsd-bids-java] [restartedMain] o.s.security.core.userdetails.User       : User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2025-04-14T09:14:02.633-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2025-04-14T09:14:02.643-07:00 DEBUG 89110 --- [ccsd-bids-java] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 6 mappings in 'requestMappingHandlerMapping'
+2025-04-14T09:14:02.659-07:00 DEBUG 89110 --- [ccsd-bids-java] [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-04-14T09:14:02.677-07:00 DEBUG 89110 --- [ccsd-bids-java] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-04-14T09:14:02.684-07:00 DEBUG 89110 --- [ccsd-bids-java] [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-04-14T09:14:02.705-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-04-14T09:14:02.713-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-14T09:14:02.716-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] c.b.c.CcsdBidsJavaApplication            : Started CcsdBidsJavaApplication in 0.43 seconds (process running for 464.564)
+2025-04-14T09:14:02.717-07:00  INFO 89110 --- [ccsd-bids-java] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-04-14T09:14:15.922-07:00  INFO 89110 --- [ccsd-bids-java] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-14T09:14:15.924-07:00  INFO 89110 --- [ccsd-bids-java] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-14T09:14:15.925-07:00  INFO 89110 --- [ccsd-bids-java] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-14T09:14:15.926-07:00  INFO 89110 --- [ccsd-bids-java] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-04-14T09:14:15.927-07:00  INFO 89110 --- [ccsd-bids-java] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-04-14T09:14:17.539-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] c.b.c.CcsdBidsJavaApplication            : Starting CcsdBidsJavaApplication using Java 21.0.6 with PID 94314 (/Users/darthsr/Sites/java/ccsd-bids-java/target/classes started by darthsr in /Users/darthsr/Sites/java/ccsd-bids-java)
+2025-04-14T09:14:17.539-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] c.b.c.CcsdBidsJavaApplication            : No active profile set, falling back to 1 default profile: "default"
+2025-04-14T09:14:17.554-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-04-14T09:14:17.554-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-04-14T09:14:17.793-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-14T09:14:17.815-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 2 JPA repository interfaces.
+2025-04-14T09:14:18.032-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-14T09:14:18.037-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-14T09:14:18.037-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-14T09:14:18.051-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-14T09:14:18.051-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 496 ms
+2025-04-14T09:14:18.119-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-14T09:14:18.140-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-14T09:14:18.151-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-14T09:14:18.244-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-14T09:14:18.255-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-14T09:14:18.327-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1154d4fe
+2025-04-14T09:14:18.328-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-14T09:14:18.364-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 9.2
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-14T09:14:18.695-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-14T09:14:18.734-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-14T09:14:18.851-07:00  WARN 94314 --- [ccsd-bids-java] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-14T09:14:18.858-07:00  WARN 94314 --- [ccsd-bids-java] [restartedMain] o.s.security.core.userdetails.User       : User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2025-04-14T09:14:18.961-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2025-04-14T09:14:19.023-07:00 DEBUG 94314 --- [ccsd-bids-java] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 22 mappings in 'requestMappingHandlerMapping'
+2025-04-14T09:14:19.053-07:00 DEBUG 94314 --- [ccsd-bids-java] [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-04-14T09:14:19.097-07:00 DEBUG 94314 --- [ccsd-bids-java] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-04-14T09:14:19.123-07:00 DEBUG 94314 --- [ccsd-bids-java] [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-04-14T09:14:19.165-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-04-14T09:14:19.186-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-14T09:14:19.191-07:00  INFO 94314 --- [ccsd-bids-java] [restartedMain] c.b.c.CcsdBidsJavaApplication            : Started CcsdBidsJavaApplication in 1.801 seconds (process running for 2.043)
+2025-04-14T09:14:24.192-07:00  INFO 94314 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.apache.tomcat.util.http.parser.Cookie  : A cookie header was received [asw={"lang":"en"};] that contained an invalid cookie. That cookie will be ignored.
+ Note: further occurrences of this error will be logged at DEBUG level.
+2025-04-14T09:14:24.197-07:00  INFO 94314 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-04-14T09:14:24.197-07:00  INFO 94314 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-04-14T09:14:24.197-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2025-04-14T09:14:24.197-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2025-04-14T09:14:24.198-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2025-04-14T09:14:24.199-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@7413f498
+2025-04-14T09:14:24.199-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@7e07b99d
+2025-04-14T09:14:24.200-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-04-14T09:14:24.200-07:00  INFO 94314 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-04-14T09:14:24.218-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/admin/bids/152/subcontractors/create", parameters={}
+2025-04-14T09:14:24.219-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bryansiegel.ccsdbidsjava.controllers.BidsController#createSubContractorForm(Long, Model)
+2025-04-14T09:14:24.262-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2025-04-14T09:14:24.378-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-04-14T09:14:24.394-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/css/bootstrap.min.css", parameters={}
+2025-04-14T09:14:24.394-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/css/dashboard.css", parameters={}
+2025-04-14T09:14:24.394-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/js/htmx.js", parameters={}
+2025-04-14T09:14:24.394-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/js/bootstrap.min.js", parameters={}
+2025-04-14T09:14:24.396-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-04-14T09:14:24.395-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-04-14T09:14:24.396-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-5] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-04-14T09:14:24.396-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-04-14T09:14:24.406-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-04-14T09:14:24.406-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-04-14T09:14:24.408-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-04-14T09:14:24.408-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-04-14T09:14:27.231-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/admin/bids/152/subcontractors/create", parameters={}
+2025-04-14T09:14:27.232-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bryansiegel.ccsdbidsjava.controllers.BidsController#createSubContractorForm(Long, Model)
+2025-04-14T09:14:27.242-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-6] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2025-04-14T09:14:27.253-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-04-14T09:14:27.267-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/css/dashboard.css", parameters={}
+2025-04-14T09:14:27.268-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/css/bootstrap.min.css", parameters={}
+2025-04-14T09:14:27.268-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-8] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-04-14T09:14:27.268-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-7] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-04-14T09:14:27.268-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/js/htmx.js", parameters={}
+2025-04-14T09:14:27.268-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-10] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-04-14T09:14:27.267-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/js/bootstrap.min.js", parameters={}
+2025-04-14T09:14:27.270-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-04-14T09:14:27.270-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-9] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-04-14T09:14:27.271-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-04-14T09:14:27.271-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-04-14T09:14:27.272-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-04-14T09:14:33.118-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : POST "/admin/bids/152/subcontractors/create", parameters={multipart}
+2025-04-14T09:14:33.123-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bryansiegel.ccsdbidsjava.controllers.BidsController#createSubContractor(Long, SubContractorListing, MultipartFile)
+2025-04-14T09:14:33.219-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.view.RedirectView        : View name [redirect:], model {}
+2025-04-14T09:14:33.220-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 302 FOUND
+2025-04-14T09:14:33.225-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/admin/bids/152/subcontractors", parameters={}
+2025-04-14T09:14:33.226-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.bryansiegel.ccsdbidsjava.controllers.BidsController#listSubContractors(Long, Model)
+2025-04-14T09:14:33.229-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-5] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2025-04-14T09:14:33.250-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-04-14T09:14:33.268-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/js/bootstrap.min.js", parameters={}
+2025-04-14T09:14:33.268-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/js/htmx.js", parameters={}
+2025-04-14T09:14:33.268-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : GET "/css/bootstrap.min.css", parameters={}
+2025-04-14T09:14:33.268-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/css/dashboard.css", parameters={}
+2025-04-14T09:14:33.269-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-3] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-04-14T09:14:33.269-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-6] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-04-14T09:14:33.269-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-4] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-04-14T09:14:33.269-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-2] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2025-04-14T09:14:33.270-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-04-14T09:14:33.270-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-04-14T09:14:33.271-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-04-14T09:14:33.272-07:00 DEBUG 94314 --- [ccsd-bids-java] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-04-14T09:14:59.954-07:00  INFO 94314 --- [ccsd-bids-java] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-14T09:14:59.961-07:00  INFO 94314 --- [ccsd-bids-java] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-14T09:14:59.965-07:00  INFO 94314 --- [ccsd-bids-java] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-14T09:14:59.969-07:00  INFO 94314 --- [ccsd-bids-java] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-14T09:14:59.975-07:00  INFO 94314 --- [ccsd-bids-java] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

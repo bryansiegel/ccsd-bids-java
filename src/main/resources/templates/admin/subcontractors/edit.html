@@ -4,26 +4,29 @@
 <h1>Edit SubContractor for Bid: <span th:text="${subContractorListing.bids.contractName}">Contract Name</span></h1>
 
 <form th:action="@{/admin/bids/{bidId}/subcontractors/edit/{id}(bidId=${subContractorListing.bids.id}, id=${subContractorListing.id})}" th:object="${subContractorListing}" method="post" class="form">
-
+    <div class="form-group">
+        <label>SubContractor</label>
+        <input type="text" th:field="*{subContractorCompanyName}" class="form-control" required/>
+    </div>
     <div class="form-group">
         <label>MPID Number:</label>
-        <input type="text" th:field="*{mpidNumber}" class="form-control"/>
+        <input type="text" th:field="*{bids.mpidNumber}" class="form-control" readonly/>
     </div>
-
     <div class="form-group">
-    <label>Document ID:</label>
-        <input type="text" th:field="*{documentId}" class="form-control"/>
+        <label>Document ID:</label>
+        <select th:field="*{subContractorDocumentId}" class="form-control" required>
+            <option value="" disabled>Select Document ID</option>
+            <option th:value="${T(com.bryansiegel.ccsdbidsjava.models.SubContractorListing).SUBCONTRACTOR_DOCUMENT_ID}"
+                    th:text="${T(com.bryansiegel.ccsdbidsjava.models.SubContractorListing).SUBCONTRACTOR_DOCUMENT_ID}"></option>
+            <option th:value="${T(com.bryansiegel.ccsdbidsjava.models.SubContractorListing).SUBCONTRACTOR_DOCUMENT_ID_A}"
+                    th:text="${T(com.bryansiegel.ccsdbidsjava.models.SubContractorListing).SUBCONTRACTOR_DOCUMENT_ID_A}"></option>
+            <option th:value="${T(com.bryansiegel.ccsdbidsjava.models.SubContractorListing).SUBCONTRACTOR_DOCUMENT_ID_B}"
+                    th:text="${T(com.bryansiegel.ccsdbidsjava.models.SubContractorListing).SUBCONTRACTOR_DOCUMENT_ID_B}"></option>
+        </select>
     </div>
-
     <div class="form-group">
-        <label class="form-label">Document URL:</label>
-        <input type="text" th:field="*{documentUrl}" class="form-control"/>
+        <button type="submit" class="btn btn-primary">Save</button>
     </div>
-
-    <div class="form-group">
-    <button type="submit" class="btn btn-primary">Save</button>
-    </div>
-
 </form>
 
 <footer th:insert="~{admin/fragments/footer}"></footer>
