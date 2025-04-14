@@ -12,6 +12,7 @@
         <th>SubContractor</th>
         <th>MPID Number</th>
         <th>Document ID</th>
+        <th>View Document</th>
         <th>Document URL</th>
         <th>Actions</th>
     </tr>
@@ -20,7 +21,14 @@
     <tr th:each="subContractor : ${subContractorListings}">
         <td th:text="${subContractor.subContractorCompanyName}">SubContractor</td>
         <td th:text="${subContractor.bids.mpidNumber}">MPID Number</td>
-        <td th:text="${subContractor.subContractorDocumentId ?: 'N/A'}">Document ID</td>        <td th:text="${subContractor.bids.mpidNumber + '-' + subContractor.subContractorCompanyName}">Document URL</td>
+        <td th:text="${subContractor.subContractorDocumentId ?: 'N/A'}">Document ID</td>
+        <td>
+            <a th:if="${subContractor.subContractorDocument != null}"
+               th:href="@{/admin/bids/{bidId}/subcontractors/download/{id}(bidId=${bid.id}, id=${subContractor.id})}"
+               class="btn btn-success" target="_blank">View Document</a>
+            <span th:if="${subContractor.subContractorDocument == null}">N/A</span>
+        </td>
+        <td th:text="${subContractor.bids.mpidNumber + '-' + subContractor.subContractorCompanyName}">Document URL</td>
         <td>
             <a th:href="@{/admin/bids/{bidId}/subcontractors/edit/{id}(bidId=${bid.id}, id=${subContractor.id})}" class="btn btn-info">Edit</a>
             <a th:href="@{/admin/bids/{bidId}/subcontractors/delete/{id}(bidId=${bid.id}, id=${subContractor.id})}" class="btn btn-danger">Delete</a>

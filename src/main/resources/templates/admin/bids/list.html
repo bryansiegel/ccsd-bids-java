@@ -20,17 +20,23 @@
         <td>
             <a th:if="${bid.advertisementForBids != null and !#arrays.isEmpty(bid.advertisementForBids)}"
                th:href="@{/admin/bids/download/{id}(id=${bid.id})}"
-               class="btn btn-success" target="_blank">View</a>
+               class="btn btn-success" target="_blank">View Document</a>
+            <span th:if="${bid.advertisementForBids == null}">N/A</span>
+
         </td>
         <td>
             <a th:if="${bid.preBidSignInSheet != null and !#arrays.isEmpty(bid.preBidSignInSheet)}"
                th:href="@{/admin/bids/download/preBid/{id}(id=${bid.id})}"
-               class="btn btn-success" target="_blank">View</a>
+               class="btn btn-success" target="_blank">View Document</a>
+            <span th:if="${bid.preBidSignInSheet == null}">N/A</span>
+
         </td>
         <td>
             <a th:if="${bid.bidTabulationSheet != null and !#arrays.isEmpty(bid.bidTabulationSheet)}"
                th:href="@{/admin/bids/download/bidTab/{id}(id=${bid.id})}"
-               class="btn btn-success" target="_blank">View</a>
+               class="btn btn-success" target="_blank">View Document</a>
+            <span th:if="${bid.bidTabulationSheet == null}">N/A</span>
+
         </td>
         <td>
             <a th:href="@{/admin/bids/{bidId}/view(bidId=${bid.id})}" class="btn btn-info">View</a>
