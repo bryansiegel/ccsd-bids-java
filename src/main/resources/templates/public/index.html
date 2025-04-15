@@ -929,7 +929,7 @@
                         <a th:if="${subContractor.subContractorDocument != null}"
                            th:href="@{/admin/bids/{bidId}/subcontractors/download/{id}(bidId=${bid.id}, id=${subContractor.id})}"
                            target="_blank"
-                           th:text="${subContractor.subContractorDocumentId} + ' - ' + ${subContractor.subContractorCompanyName}"></a>
+                           th:text="${subContractor.subContractorDocumentId} + ' SubContractor Listing - ' + ${subContractor.subContractorCompanyName}"></a>
                     </td>
                 </tr>
                 <tr>
